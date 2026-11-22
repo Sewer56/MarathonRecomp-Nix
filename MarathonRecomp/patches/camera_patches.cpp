@@ -224,6 +224,9 @@ public:
 
         // TODO: figure out the true source of these flags, pulling them from a
         // random plugin that happens to store a copy of them feels a bit wrong.
+        if (pStateMachineContext->m_spGravity.px.ptr.get() < sizeof(Sonicteam::Player::Gravity))    
+            return false;
+
         if (const auto pGravity = pStateMachineContext->m_spGravity.get())
         {
             if ((pGravity->m_Flags.get() & Sonicteam::Player::PostureControlFlags_Rope) != 0)
